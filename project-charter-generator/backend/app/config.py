@@ -25,3 +25,14 @@ class Config:
     TEMPERATURE=os.getenv("TEMPERATURE")
 
     SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
+    TOP_K = int(os.getenv("TOP_K", "3"))
+
+    PROMPT_TEMPLATE =
+        (
+            "You are a helpful assistant.\n"
+            "Use ONLY the context and questionnaire data to answer. If the answer isn't in the context, say you don't know.\n\n"
+            "Context:\n{context}\n\n"
+            "Questionnaire:\n{questionnaire}\n\n"
+            "Question:\n{question}\n\n"
+            "Answer:"
+        )
