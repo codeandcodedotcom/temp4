@@ -1,5 +1,5 @@
 from flask import Flask
-from app.api import test
+from app.api import test, generation
 from app.config import Config
 from app.utils.logger import get_logger
 
@@ -15,5 +15,7 @@ def create_app():
     # Register blueprints
     app.register_blueprint(test.bp, url_prefix="/api/test")
     logger.info("Blueprint 'test' registered at /api/test")
+    app.register_blueprint(generation.bp, url_prefix="/api/generation")
+    logger.info("Blueprint 'generation' registered at /api/generation")
 
     return app
