@@ -1,0 +1,19 @@
+from flask import Flask
+from app.api import test
+from app.config import Config
+from app.utils.logger import get_logger
+
+logger = get_logger(__name__)
+
+def create_app():
+    """
+    Registers blueprints and initializes extensions.
+    """
+    app = Flask(__name__)
+    app.config["SECRET_KEY"] = Config.SECRET_KEY
+
+    # Register blueprints
+    app.register_blueprint(test.bp, url_prefix="/api/test")
+    logger.info("Blueprint 'test' registered at /api/test")
+
+    return app
